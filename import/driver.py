@@ -6,6 +6,7 @@ import datahubapi
 from pymongo import MongoClient
 
 def main():
+	print("starting station import...")
 	client = MongoClient('localhost', 27017)
 	db = client.geo_attr
 	stations = db.stations
@@ -17,4 +18,6 @@ def main():
 	for station in stations.find():
 		print(station)
 
+if __name__== "__main__":
+  main()
 
