@@ -4,14 +4,14 @@ import pymongo
 
 from pymongo import MongoClient
 
-def waterquality_stations():
-	url = "http://datahub.chesapeakebay.net/api.JSON/WaterQuality/Station/"
+def geoAttr_stations():
+	url = "http://datahub.chesapeakebay.net/api.JSON/Station/"
 	print(url)
 	response = urllib2.urlopen(url)
 	data = simplejson.load(response)
 	print(data)
 	client = client = MongoClient('localhost', 27017)
-	db = client.waterquality 
+	db = client.geo_attr
 	stations = db.stations
 	station_ids = stations.insert_many(data).inserted_ids
 	print(station_ids)
