@@ -12,11 +12,11 @@ def main():
 	stations = db.stations
 
 	# import all station geographical attributes
-	geoAttr_stations(client)
+	datahubapi.geoAttr_stations(client)
 
 	# iterate through all attributes to import all station details
 	for station in stations.find():
-		print(station)
+		datahubapi.waterquality_station("Station", str(station["StationId"]))	
 
 if __name__== "__main__":
   main()
