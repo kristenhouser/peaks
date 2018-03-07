@@ -1,5 +1,7 @@
 import urllib.request as urllib2
 import json as simplejson
+import pymongo
+
 from pymongo import MongoClient
 
 def waterquality_station(geo_attr, attr_id):
@@ -8,12 +10,12 @@ def waterquality_station(geo_attr, attr_id):
 	response = urllib2.urlopen(url)
 	data = simplejson.load(response)
 	print(data)
-	client = client = MongoClient('localhost', 27017)
-	db = client.peaks 
-	collection = db.waterquality 
-	stations = db.stations
-	station_id = stations.insert_one(data).inserted_id
-	print(station_id)
+	# client = client = MongoClient('localhost', 27017)
+	# db = client.peaks 
+	# collection = db.waterquality 
+	# stations = db.stations
+	# station_id = stations.insert_one(data).inserted_id
+	# print(station_id)
 
 
 
