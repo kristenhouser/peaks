@@ -4,13 +4,10 @@ import pymongo
 
 from pymongo import MongoClient
 
-def geoAttr_stations():
+def geoAttr_stations(client):
 	url = "http://datahub.chesapeakebay.net/api.JSON/Station/"
-	print(url)
 	response = urllib2.urlopen(url)
 	data = simplejson.load(response)
-	print(data)
-	client = client = MongoClient('localhost', 27017)
 	db = client.geo_attr
 	stations = db.stations
 	station_ids = stations.insert_many(data).inserted_ids
@@ -22,7 +19,7 @@ def waterquality_station(geo_attr, attr_id):
 	response = urllib2.urlopen(url)
 	data = simplejson.load(response)
 	print(data[0])
-	client = client = MongoClient('localhost', 27017)
+	client = MongoClient('localhost', 27017)
 	db = client.waterquality 
 	stations = db.stations
 	station_id = stations.insert_one(data[0]).inserted_id
@@ -35,7 +32,7 @@ def waterquality_monitoringevent(start_date, end_date, program_id, project_id, g
 	response = urllib2.urlopen(url)
 	data = simplejson.load(response)
 	print(data[0])
-	client = client = MongoClient('localhost', 27017)
+	client  = MongoClient('localhost', 27017)
 	db = client.waterquality 
 	events = db.monitoringevent 
 	event_id = events.insert_one(data[0]).inserted_id
