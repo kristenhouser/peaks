@@ -19,11 +19,13 @@ def waterquality_station(geo_attr, attr_id):
 	response = urllib2.urlopen(url)
 	data = simplejson.load(response)
 	print(data)
-	client = MongoClient('localhost', 27017)
-	db = client.waterquality 
-	stations = db.stations
-	station_ids = stations.insert_many(data).inserted_ids
-	print(station_ids)
+	if data:
+		client = MongoClient('localhost', 27017)
+		db = client.waterquality 
+		stations = db.stations
+		station_ids = stations.insert_many(data).inserted_ids
+		print(station_ids)
+
 
 def waterquality_monitoringevent(start_date, end_date, program_id, project_id, geo_attr, attr_id):
 	url = "/".join(["http://datahub.chesapeakebay.net/api.JSON/WaterQuality/MonitorEvent/", 
