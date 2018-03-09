@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'peaks.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.path.join(BASE_DIR, 'db.postgresql'),
+        'NAME': 'peaks',
         'USER': 'peaks',
         'PASSWORD': 'mypassword',
         'HOST': '127.0.0.1',
